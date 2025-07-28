@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:myapp/src/inicio_sesion.dart';
 import 'package:myapp/src/theme/colors.dart';
-import 'package:myapp/src/utils/custom_text_input.dart';
+import 'package:myapp/src/Widgets/custom_text_input.dart';
 
 Future<dynamic> showModalLoginWha(BuildContext context, Size size) {
   return showModalBottomSheet(
@@ -62,7 +62,7 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                     width: 40,
                     height: 3,
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
+                      color: AppColors.silverGrayMedium,
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
@@ -74,6 +74,7 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                         fontSize: 16.0,
                         fontFamily: "Inter",
                         fontWeight: FontWeight.w700,
+                        color: AppColors.black,
                       ),
                     )
                   else
@@ -83,6 +84,7 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                         fontSize: 16.0,
                         fontFamily: "Inter",
                         fontWeight: FontWeight.w700,
+                        color: AppColors.black,
                       ),
                     ),
                   const SizedBox(height: 5),
@@ -91,7 +93,7 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                       "Te enviaremos un código para confirmarlo",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: AppColors.slateCoolGray,
                         fontFamily: "Inter",
                         fontWeight: FontWeight.w300,
                       ),
@@ -103,7 +105,7 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                       style: TextStyle(
                         fontFamily: "Inter",
                         fontWeight: FontWeight.w300,
-                        color: Colors.grey,
+                        color: AppColors.slateCoolGray,
                       ),
                     ),
                   const SizedBox(height: 16),
@@ -121,18 +123,13 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                       },
                       style: ElevatedButton.styleFrom(
                         minimumSize: Size(widget.size.width * 0.9, 40),
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          225,
-                          161,
-                          65,
-                        ),
+                        backgroundColor: AppColors.orangeBrand,
                         elevation: 0,
                       ),
                       child: const Text(
                         "Enviar código",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.white,
                           fontSize: 14.0,
                           fontFamily: "Inter",
                           fontWeight: FontWeight.w300,
@@ -152,17 +149,12 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(widget.size.width * 0.9, 40),
-                            backgroundColor: const Color.fromARGB(
-                              255,
-                              225,
-                              161,
-                              65,
-                            ),
+                            backgroundColor: AppColors.orangeBrand,
                             elevation: 0,
                           ),
                           child: const Text(
                             "Validar código",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: AppColors.white),
                           ),
                         ),
                         const SizedBox(height: 16), // Add spacing here
@@ -185,7 +177,7 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                           child: const Text(
                             "Usar otro método de verificación",
                             style: TextStyle(
-                              color: Colors.grey,
+                              color: AppColors.slateCoolGray,
                               fontFamily: "Inter",
                               fontWeight: FontWeight.w300,
                             ),
@@ -207,7 +199,7 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                           child: const Text(
                             "Reenviar código",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: AppColors.black,
                               fontFamily: "Inter",
                               fontWeight: FontWeight.w600,
                             ),
@@ -240,7 +232,7 @@ class __LoginModalWhaContentState extends State<_LoginModalWhaContent> {
                         child: const Text(
                           "Usar otro método de verificación",
                           style: TextStyle(
-                            color: Colors.grey,
+                            color: AppColors.slateCoolGray,
                             fontFamily: "Inter",
                             fontWeight: FontWeight.w300,
                           ),

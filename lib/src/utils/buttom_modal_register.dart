@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:myapp/src/inicio_sesion.dart';
 import 'package:myapp/src/theme/colors.dart';
-import 'package:myapp/src/utils/custom_text_input.dart';
+import 'package:myapp/src/Widgets/custom_text_input.dart';
 
 Future<dynamic> showModalLoginRegister(BuildContext context, Size size) {
   return showModalBottomSheet(
@@ -49,7 +49,7 @@ class __LoginModalRegisterContentState
             widget.size.height *
             0.87, // Puedes ajustar la altura según necesites
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(12.0),
             topRight: Radius.circular(12.0),
@@ -66,7 +66,7 @@ class __LoginModalRegisterContentState
                   width: 40,
                   height: 3,
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
+                    color: AppColors.silverGrayMedium,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -77,6 +77,7 @@ class __LoginModalRegisterContentState
                     fontSize: 16.0,
                     fontFamily: "Inter",
                     fontWeight: FontWeight.w700,
+                    color: AppColors.black,
                   ),
                 ),
                 const SizedBox(height: 5),
@@ -86,7 +87,7 @@ class __LoginModalRegisterContentState
                   style: TextStyle(
                     fontFamily: "Inter",
                     fontWeight: FontWeight.w300,
-                    color: Colors.grey,
+                    color: AppColors.slateCoolGray,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -145,7 +146,7 @@ class __LoginModalRegisterContentState
                               fontFamily: "Inter",
                               fontSize: 14.0,
                               fontWeight: FontWeight.w300,
-                              color: Colors.black,
+                              color: AppColors.black,
                             ),
                             children: <TextSpan>[
                               TextSpan(
@@ -176,7 +177,7 @@ class __LoginModalRegisterContentState
                           : null, // Deshabilita el botón si no se aceptan los términos
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(widget.size.width * 0.9, 40),
-                    backgroundColor: const Color.fromARGB(255, 225, 161, 65),
+                    backgroundColor: AppColors.orangeBrand,
                     elevation: 0,
                   ),
                   child: AnimatedDefaultTextStyle(
@@ -186,8 +187,8 @@ class __LoginModalRegisterContentState
                       fontWeight: FontWeight.w300,
                       color:
                           _aceptaTerminos
-                              ? Colors.white
-                              : const Color.fromARGB(255, 115, 120, 128),
+                              ? AppColors.white
+                              : AppColors.warmGray,
                     ),
                     duration: const Duration(
                       milliseconds: 0,
@@ -217,8 +218,8 @@ class CustomCheckbox extends StatelessWidget {
     super.key,
     required this.value,
     required this.onChanged,
-    this.activeColor = Colors.orange, // Default active color
-    this.inactiveColor = Colors.white, // Default inactive color
+    this.activeColor = AppColors.orangeBrand, // Default active color
+    this.inactiveColor = AppColors.white, // Default inactive color
     this.radius = 12.0, // Default radius
     this.borderWidth = 1.5, // Default border width
   });
@@ -244,7 +245,10 @@ class CustomCheckbox extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: value ? activeColor : Colors.grey, // Border color
+                  color:
+                      value
+                          ? activeColor
+                          : AppColors.silverGrayMedium, // Border color
                   width: borderWidth,
                 ),
               ),
@@ -302,7 +306,7 @@ class __LoginModalCodeContentState extends State<_LoginModalCodeContent> {
     return Container(
       height: widget.size.height * 0.63, // Fixed height
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(12.0),
           topRight: Radius.circular(12.0),
@@ -321,7 +325,7 @@ class __LoginModalCodeContentState extends State<_LoginModalCodeContent> {
                     width: 40,
                     height: 3,
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
+                      color: AppColors.silverGrayMedium,
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
@@ -332,6 +336,7 @@ class __LoginModalCodeContentState extends State<_LoginModalCodeContent> {
                       fontSize: 16.0,
                       fontFamily: "Inter",
                       fontWeight: FontWeight.w700,
+                      color: AppColors.black,
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -339,7 +344,7 @@ class __LoginModalCodeContentState extends State<_LoginModalCodeContent> {
                     "Ingresa el código para confirmarlo",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: AppColors.slateCoolGray,
                       fontFamily: "Inter",
                       fontWeight: FontWeight.w300,
                     ),
@@ -400,7 +405,7 @@ class __LoginModalCodeContentState extends State<_LoginModalCodeContent> {
                       child: const Text(
                         "Usar otro método de verificación",
                         style: TextStyle(
-                          color: Colors.grey,
+                          color: AppColors.slateCoolGray,
                           fontFamily: "Inter",
                           fontWeight: FontWeight.w300,
                         ),
@@ -422,7 +427,7 @@ class __LoginModalCodeContentState extends State<_LoginModalCodeContent> {
                     child: const Text(
                       "Reenviar código",
                       style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: AppColors.black,
                         fontFamily: "Inter",
                         fontWeight: FontWeight.w600,
                       ),

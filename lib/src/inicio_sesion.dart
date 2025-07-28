@@ -187,7 +187,7 @@ class InicioSesion extends StatelessWidget {
                             shadowColor: Colors.transparent, // Black border
                           ),
                           onPressed: () {
-                            // TODO: Implement phone confirmation
+                         
                           },
                           icon: SvgPicture.asset(
                             'assets/svg/apple.svg',

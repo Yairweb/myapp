@@ -7,11 +7,11 @@ class CustomTextInput extends StatefulWidget {
   final TextEditingController? controller;
 
   const CustomTextInput({
-    Key? key,
+    super.key,
     required this.hintText,
     this.keyboardType = TextInputType.text,
     this.controller,
-  }) : super(key: key);
+  });
 
   @override
   _CustomTextInputState createState() => _CustomTextInputState();
