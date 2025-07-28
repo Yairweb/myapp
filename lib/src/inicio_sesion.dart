@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:myapp/src/utils/show_buttom_modals.dart';
+import 'package:myapp/src/utils/buttom_modal_login.dart';
+import 'package:myapp/src/utils/buttom_modal_wha.dart';
+import 'package:myapp/src/utils/buttom_modal_register.dart';
 import 'package:myapp/src/theme/colors.dart';
 
 class InicioSesion extends StatelessWidget {
