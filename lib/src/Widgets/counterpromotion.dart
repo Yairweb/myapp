@@ -69,7 +69,7 @@ class CounterPromotionState extends State<CounterPromotion>
                     TextOverflow
                         .ellipsis, // This might not be needed with SingleChildScrollView
                 text: TextSpan(
-                  style: TextStyle(color: Colors.white, fontSize: 14.0),
+                  style: TextStyle(color: AppColors.white, fontSize: 14.0),
                   children: <TextSpan>[
                     TextSpan(text: promoText),
                     TextSpan(
@@ -83,8 +83,8 @@ class CounterPromotionState extends State<CounterPromotion>
           ),
           SizedBox(width: 8.0), // Add a gap of 8 pixels
           Container(
-            width: 150, // Adjust width as needed
-            height: 32, // Adjust height as needed to fit within the row
+            width: 130, // Adjust width as needed
+            height: 40, // Adjust height as needed to fit within the row
             decoration: BoxDecoration(
               color: AppColors.orangeBrand, // Orange background color
               borderRadius: BorderRadius.circular(8.0), // Rounded corners
@@ -92,26 +92,114 @@ class CounterPromotionState extends State<CounterPromotion>
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 8.0,
-                vertical: 4.0,
+                vertical: 0.0,
               ), // Add padding
-              child: Column(
+              child: Row(
+                // Usamos una Row principal
                 mainAxisAlignment:
-                    MainAxisAlignment.center, // Center content vertically
+                    MainAxisAlignment
+                        .spaceEvenly, // Distribuye las columnas uniformemente
                 children: [
-                  const Text(
-                    '1 . 14 . 25 . 20', // Static text
-                    style: TextStyle(
-                      color: Colors.white, // White text color
-                      fontSize: 16.0, // Adjust font size as needed
-                      fontWeight: FontWeight.bold, // Bold font weight
-                    ),
+                  // Columna para Días
+                  Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment
+                            .center, // Centra verticalmente en esta columna
+                    children: [
+                      const Text(
+                        '1', // Número de días
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Text(
+                        'Días', // Etiqueta de días
+                        style: TextStyle(color: Colors.white, fontSize: 8.0),
+                      ),
+                    ],
                   ),
                   const Text(
-                    'Días   Hs   Min   Seg', // Static text for labels
+                    ':', // El separador
                     style: TextStyle(
-                      color: Colors.white, // White text color
-                      fontSize: 10.0, // Adjust font size as needed
+                      color: Colors.white, // Color del separador
+                      fontSize: 14.0, // Ajusta el tamaño según necesites
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment
+                            .center, // Centra verticalmente en esta columna
+                    children: [
+                      const Text(
+                        '14', // Número de días
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Text(
+                        'Hs', // Etiqueta de días
+                        style: TextStyle(color: Colors.white, fontSize: 8.0),
+                      ),
+                    ],
+                  ),
+                  const Text(
+                    ':', // El separador
+                    style: TextStyle(
+                      color: Colors.white, // Color del separador
+                      fontSize: 14.0, // Ajusta el tamaño según necesites
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment
+                            .center, // Centra verticalmente en esta columna
+                    children: [
+                      const Text(
+                        '25', // Número de días
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Text(
+                        'Min', // Etiqueta de días
+                        style: TextStyle(color: Colors.white, fontSize: 8.0),
+                      ),
+                    ],
+                  ),
+                  const Text(
+                    ':', // El separador
+                    style: TextStyle(
+                      color: Colors.white, // Color del separador
+                      fontSize: 14.0, // Ajusta el tamaño según necesites
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment
+                            .center, // Centra verticalmente en esta columna
+                    children: [
+                      const Text(
+                        '20', // Número de días
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Text(
+                        'Seg', // Etiqueta de días
+                        style: TextStyle(color: Colors.white, fontSize: 8.0),
+                      ),
+                    ],
                   ),
                 ],
               ),
