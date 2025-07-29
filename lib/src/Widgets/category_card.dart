@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/src/theme/colors.dart';
+// Importa tu archivo de colores si tienes uno definido
+// import 'package:myapp/src/theme/colors.dart';
 
 class CategoryItem extends StatefulWidget {
   final String imageUrl;
@@ -17,34 +20,38 @@ class CategoryItem extends StatefulWidget {
 class _CategoryItemState extends State<CategoryItem> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      // O un Container con decoración similar
-      elevation: 2.0, // Sombra ligera
-      shape: RoundedRectangleBorder(
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(8.0), // Bordes redondeados
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
+          SizedBox(
+            height:
+                109.0, // Altura controlada para la imagen (ajusta si es necesario)
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(8.0),
-              ), // Bordes redondeados en la parte superior
+                bottom: Radius.circular(8.0),
+              ), // Bordes redondeados en la parte superior de la imagen
               child: Image.network(
-                // O Image.asset si las imágenes son locales
                 widget.imageUrl,
                 fit: BoxFit.cover, // Ajusta la imagen para cubrir el espacio
-                // Puedes añadir un loadingBuilder o errorBuilder aquí
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(7.0),
             child: Text(
               widget.categoryName,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 14.0,
+                fontFamily: "inter",
+                fontWeight: FontWeight.w300,
+              ), // Estilo del texto
             ),
           ),
         ],

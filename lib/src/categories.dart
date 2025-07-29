@@ -11,7 +11,11 @@ class CategoriesScreen extends StatelessWidget {
 
   // Datos de ejemplo para las categorías
   final List<Map<String, String>> categories = const [
-    {'name': 'Electrónica', 'imageUrl': 'https://via.placeholder.com/150'},
+    {
+      'name': 'Accesorios',
+      'imageUrl':
+          'https://blife-mx-categorias.s3.amazonaws.com/accesorios-8b9c54-movil.webp',
+    },
     {'name': 'Ropa', 'imageUrl': 'https://via.placeholder.com/150'},
     {'name': 'Hogar', 'imageUrl': 'https://via.placeholder.com/150'},
     {'name': 'Deportes', 'imageUrl': 'https://via.placeholder.com/150'},
@@ -59,7 +63,7 @@ class CategoriesScreen extends StatelessWidget {
                                 mainAxisSpacing:
                                     16.0, // Espacio vertical entre elementos
                                 childAspectRatio:
-                                    0.8, // Relación de aspecto de los elementos (ancho/alto)
+                                    1.2, // Relación de aspecto de los elementos (ancho/alto)
                               ),
                               itemCount:
                                   categories
