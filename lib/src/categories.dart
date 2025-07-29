@@ -35,7 +35,7 @@ class CategoriesScreen extends StatelessWidget {
                   CounterPromotion(),
                   HomeHeader(),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
+                    padding: const EdgeInsets.only(bottom: 5.0),
                     child: ProductSearchBar(),
                   ),
                   Expanded(
@@ -49,7 +49,8 @@ class CategoriesScreen extends StatelessWidget {
                             'Explora por categorías',
                             style: TextStyle(
                               fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: "inter",
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                           SizedBox(height: 16.0),
@@ -59,9 +60,9 @@ class CategoriesScreen extends StatelessWidget {
                               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2, // Número de columnas
                                 crossAxisSpacing:
-                                    16.0, // Espacio horizontal entre elementos
+                                    12.0, // Espacio horizontal entre elementos
                                 mainAxisSpacing:
-                                    16.0, // Espacio vertical entre elementos
+                                    12.0, // Espacio vertical entre elementos
                                 childAspectRatio:
                                     1.2, // Relación de aspecto de los elementos (ancho/alto)
                               ),
