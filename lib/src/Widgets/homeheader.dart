@@ -18,7 +18,8 @@ class HomeHeader extends StatelessWidget implements PreferredSizeWidget {
             IconButton(
               icon: SvgPicture.asset('assets/svg/burguer.svg', height: 24.0),
               onPressed: () {
-                // TODO: Implementar acción para abrir el menú
+                Scaffold.of(context).openDrawer(
+                );
               },
             ),
             SvgPicture.asset('assets/svg/logomayoreo.svg', height: 25.0),

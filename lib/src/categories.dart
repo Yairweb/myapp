@@ -1,79 +1,100 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/src/Widgets/homeheader.dart'; // Import the new widget
 import 'package:myapp/src/Widgets/productsearchbar.dart'; // Import the ProductSearchBar widget
-import 'package:myapp/src/Widgets/counterpromotion.dart'; // Import the CounterPromotion widget
+import 'package:myapp/src/Widgets/counterpromotion.dart';
+import 'package:myapp/src/utils/buttom_nav_bar.dart';
+import 'package:myapp/src/utils/menu_lateral.dart'; // Import the CounterPromotion widget
+import 'package:myapp/src/Widgets/category_card.dart'; // Import CategoryItem
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
 
+  // Datos de ejemplo para las categorías
+  final List<Map<String, String>> categories = const [
+    {'name': 'Electrónica', 'imageUrl': 'https://via.placeholder.com/150'},
+    {'name': 'Ropa', 'imageUrl': 'https://via.placeholder.com/150'},
+    {'name': 'Hogar', 'imageUrl': 'https://via.placeholder.com/150'},
+    {'name': 'Deportes', 'imageUrl': 'https://via.placeholder.com/150'},
+    {'name': 'Libros', 'imageUrl': 'https://via.placeholder.com/150'},
+    {'name': 'Juguetes', 'imageUrl': 'https://via.placeholder.com/150'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Remove the appBar
-      // appBar: const HomeHeader(), // Use the custom widget
-      drawer: Drawer(
-        // Drawer content goes here
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            CounterPromotion(), // Add CounterPromotion here
-            HomeHeader(), // Add HomeHeader here
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 16.0,
-              ), // Add padding to the bottom
-              child: ProductSearchBar(), // Use the ProductSearchBar widget here
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Categories Section
-                      Text(
-                        'Explora por categorías',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 16.0),
-                      // Category Grid Placeholder
-                      Container(
-                        height:
-                            500, // Placeholder height, will be replaced by GridView
-                        color: Colors.grey[300],
-                        child: Center(child: Text('Category Grid Goes Here')),
-                      ),
-                    ],
+      drawer: MenuLateral(),
+      body: Builder(
+        builder:
+            (context) => SafeArea(
+              child: Column(
+                children: [
+                  CounterPromotion(),
+                  HomeHeader(),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: ProductSearchBar(),
                   ),
-                ),
+                  Expanded(
+                    child: Padding(
+                      // Eliminado SingleChildScrollView
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Explora por categorías',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 16.0),
+                          Expanded(
+                            // Envuelve el GridView.builder en Expanded
+                            child: GridView.builder(
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2, // Número de columnas
+                                crossAxisSpacing:
+                                    16.0, // Espacio horizontal entre elementos
+                                mainAxisSpacing:
+                                    16.0, // Espacio vertical entre elementos
+                                childAspectRatio:
+                                    0.8, // Relación de aspecto de los elementos (ancho/alto)
+                              ),
+                              itemCount:
+                                  categories
+                                      .length, // Número total de elementos
+                              itemBuilder: (context, index) {
+                                // Construye un CategoryItem para cada elemento de la lista
+                                return CategoryItem(
+                                  categoryName: categories[index]['name']!,
+                                  imageUrl: categories[index]['imageUrl']!,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: 'Categories',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        currentIndex: 1, // Set the current index to Categories
-        selectedItemColor: Colors.amber[800], // Example selected item color
-        unselectedItemColor: Colors.grey, // Example unselected item color
-        onTap: (index) {
-          // Handle navigation
+      bottomNavigationBar: BottomNavBar(
+        onTabTapped: (index) {
+          switch (index) {
+            case 0:
+              break;
+            case 1:
+              break;
+            case 2:
+              break;
+            case 3:
+              break;
+            case 4:
+              break;
+          }
         },
       ),
     );
