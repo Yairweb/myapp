@@ -41,7 +41,10 @@ class MenuLateral extends StatelessWidget {
           ),
           ExpandableMenuItem(
             title: 'Categorías',
-            icon: Icons.category,
+            activeIconPath:
+                'assets/svg/categorie_active.svg', // Reemplaza con la ruta de tu icono activo
+            inactiveIconPath:
+                'assets/svg/categorie_inactive.svg', // Reemplaza con la ruta de tu icono inactivo
             children: [
               ListTile(
                 title: Text('Subcategoría 1'),

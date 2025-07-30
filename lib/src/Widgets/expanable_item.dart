@@ -3,16 +3,18 @@ import 'package:flutter_svg/svg.dart';
 import 'package:myapp/src/theme/colors.dart';
 
 class ExpandableMenuItem extends StatefulWidget {
-  final IconData icon;
   final String title;
+  final String activeIconPath; // Ruta del SVG activo
+  final String inactiveIconPath; // Ruta del SVG inactivo
   final List<Widget> children;
 
   const ExpandableMenuItem({
-    super.key,
-    required this.icon,
+    Key? key,
     required this.title,
+    required this.activeIconPath,
+    required this.inactiveIconPath,
     required this.children,
-  });
+  }) : super(key: key);
 
   @override
   _ExpandableMenuItemState createState() => _ExpandableMenuItemState();
@@ -20,9 +22,6 @@ class ExpandableMenuItem extends StatefulWidget {
 
 class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
   bool _isExpanded = false;
-  Color _containerColor =
-      AppColors.white; // Variable para el color del Container de los hijos
-  Color _iconColor = AppColors.black;
 
   final String _expandedIconPath = 'assets/svg/arrow_up.svg';
   final String _collapsedIconPath = 'assets/svg/arrow_down.svg';
@@ -56,10 +55,6 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
               onTap: () {
                 setState(() {
                   _isExpanded = !_isExpanded;
-                  _containerColor =
-                      _isExpanded ? Colors.grey[200]! : Colors.transparent;
-                  _iconColor =
-                      _isExpanded ? AppColors.orangeBrand : AppColors.black;
                 });
               },
               child: Padding(
@@ -73,7 +68,13 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(widget.icon, color: _iconColor, size: 20.0),
+                    SvgPicture.asset(
+                      _isExpanded
+                          ? widget.activeIconPath
+                          : widget.inactiveIconPath,
+                      width: 20.0, // Ajusta el tamaño según necesites
+                      height: 20.0, // Ajusta el tamaño según necesites
+                    ),
                     SizedBox(width: 12.0),
                     Expanded(
                       child: Text(
@@ -99,7 +100,7 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
           ),
           if (_isExpanded)
             Container(
-              color: _containerColor,
+              color: AppColors.white,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,4 +112,3 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
     );
   }
 }
-
