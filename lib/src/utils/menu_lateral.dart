@@ -46,17 +46,19 @@ class MenuLateral extends StatelessWidget {
             inactiveIconPath:
                 'assets/svg/categorie_inactive.svg', // Reemplaza con la ruta de tu icono inactivo
             children: [
-              ListTile(
+              SubcategoryItem(
                 title: Text('Subcategoría 1'),
                 onTap: () {
                   // Acción al seleccionar Subcategoría 1
                 },
+                text: 'Vitaminas y más',
               ),
-              ListTile(
-                title: Text('Subcategoría 2'),
+              SubcategoryItem(
+                title: Text('Subcategoría 1'),
                 onTap: () {
-                  // Acción al seleccionar Subcategoría 2
+                  // Acción al seleccionar Subcategoría 1
                 },
+                text: 'Ofertas del mes',
               ),
             ],
           ),
