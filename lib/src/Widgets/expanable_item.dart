@@ -29,71 +29,86 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // Envuelve el ListTile en un Container
-        Container(
-          width: double.infinity,
-          height: 40.0,
-          decoration: BoxDecoration(
-            color:
-                _isExpanded
-                    ? AppColors.backCards
-                    : AppColors.white, // Color de fondo condicional
-            borderRadius: BorderRadius.circular(
-              10.0,
-            ), // Radio para redondear las esquinas
-          ),
-          child: ListTile(
-            leading: Icon(
-              widget.icon,
-              color: _iconColor,
-              size:
-                  20.0, // Define el tamaño del icono (ajusta el valor según sea necesario)
-            ),
-            title: Text(
-              widget.title,
-              style: TextStyle(
-                fontFamily: "inter",
-                fontSize: 16.0,
-                fontWeight: FontWeight.w300,
-                color: _isExpanded ? Colors.black : Colors.black,
+    return Padding(
+      // Envuelve el Column con Padding
+      padding: const EdgeInsets.only(
+        left: 0.0, // Padding a la izquierda
+        top: 0.0, // Padding arriba (ajusta según necesites)
+        right: 16.0, // Padding a la derecha
+        bottom: 0.0, // Padding abajo (ajusta según necesites)
+      ), // Ajusta el padding horizontal aquí
+      child: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 37.0,
+            decoration: BoxDecoration(
+              color: _isExpanded ? AppColors.backCards : AppColors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(0.0),
+                topRight: Radius.circular(50.0),
+                bottomLeft: Radius.circular(0.0),
+                bottomRight: Radius.circular(50.0),
               ),
             ),
-            trailing:
-            // Usa SvgPicture.asset para mostrar los iconos SVG
-            SvgPicture.asset(
-              _isExpanded ? _expandedIconPath : _collapsedIconPath,
-              width: 8.0, // Define el ancho del icono SVG
-              height: 8.0, // Define la altura del icono SVG
-              // Puedes agregar color si tus SVG son monocromáticos y quieres cambiarles el color
-              // color: Colors.black,
+            alignment: Alignment.center,
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                  _containerColor =
+                      _isExpanded ? Colors.grey[200]! : Colors.transparent;
+                  _iconColor =
+                      _isExpanded ? AppColors.orangeBrand : AppColors.black;
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 16.0,
+                  top: 8.0,
+                  right: 16.0,
+                  bottom: 8.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(widget.icon, color: _iconColor, size: 20.0),
+                    SizedBox(width: 12.0),
+                    Expanded(
+                      child: Text(
+                        widget.title,
+                        style: TextStyle(
+                          fontFamily: "inter",
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w300,
+                          color: _isExpanded ? Colors.black : Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 12.0),
+                    SvgPicture.asset(
+                      _isExpanded ? _expandedIconPath : _collapsedIconPath,
+                      width: 8.0,
+                      height: 8.0,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            onTap: () {
-              setState(() {
-                _isExpanded = !_isExpanded;
-                // Actualiza el color del Container basado en el estado de expansión
-                _containerColor =
-                    _isExpanded ? Colors.grey[200]! : Colors.transparent;
-                _iconColor = _isExpanded ? Colors.orange : Colors.black;
-              });
-            },
           ),
-        ),
-        if (_isExpanded)
-          Container(
-            color: _containerColor,
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Column(
-              // Centra los elementos hijos horizontalmente
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children:
-                  widget.children.map((child) {
-                    return child;
-                  }).toList(),
+          if (_isExpanded)
+            Container(
+              color: _containerColor,
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: widget.children,
+              ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }
+
