@@ -8,41 +8,34 @@ class MenuLateral extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.white,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          SizedBox(
-            height: 100, // Ajusta la altura aquí
-            child: DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.white, // Puedes ajustar el color de fondo
-              ),
-              child: SafeArea(
-                // Agrega SafeArea aquí
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment:
-                          Alignment
-                              .centerLeft, // Logo a la izquierda y centrado verticalmente
-                      child: SvgPicture.asset(
-                        'assets/svg/logomayoreo.svg', // Reemplaza con la ruta de tu logo
-                        height: 23, // Ajusta la altura según sea necesario
-                      ),
+          // Removed DrawerHeader and added content directly
+          SafeArea(
+            child: Container(
+              height: 60, // Adjust height as needed
+              padding: EdgeInsets.symmetric(horizontal: 16.0), // Add padding
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: SvgPicture.asset(
+                      'assets/svg/logomayoreo.svg',
+                      height: 23,
                     ),
-                    Align(
-                      alignment:
-                          Alignment
-                              .centerRight, // Icono a la derecha y centrado verticalmente
-                      child: IconButton(
-                        icon: Icon(Icons.close),
-                        onPressed: () {
-                          Navigator.pop(context); // Cierra el Drawer
-                        },
-                      ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: IconButton(
+                      icon: Icon(Icons.close),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
