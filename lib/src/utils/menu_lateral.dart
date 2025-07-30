@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:myapp/src/Widgets/expanable_item.dart';
 
 class MenuLateral extends StatelessWidget {
   const MenuLateral({super.key});
@@ -10,68 +11,79 @@ class MenuLateral extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.white, // Puedes ajustar el color de fondo
-            ),
-            child: SafeArea(
-              // Agrega SafeArea aquí
-              child: Stack(
-                children: [
-                  Align(
-                    alignment:
-                        Alignment
-                            .centerLeft, // Logo a la izquierda y centrado verticalmente
-                    child: SvgPicture.asset(
-                      'assets/svg/logomayoreo.svg', // Reemplaza con la ruta de tu logo
-                      height: 30, // Ajusta la altura según sea necesario
+          SizedBox(
+            height: 100, // Ajusta la altura aquí
+            child: DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.white, // Puedes ajustar el color de fondo
+              ),
+              child: SafeArea(
+                // Agrega SafeArea aquí
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment:
+                          Alignment
+                              .centerLeft, // Logo a la izquierda y centrado verticalmente
+                      child: SvgPicture.asset(
+                        'assets/svg/logomayoreo.svg', // Reemplaza con la ruta de tu logo
+                        height: 23, // Ajusta la altura según sea necesario
+                      ),
                     ),
-                  ),
-                  Align(
-                    alignment:
-                        Alignment
-                            .centerRight, // Icono a la derecha y centrado verticalmente
-                    child: IconButton(
-                      icon: Icon(Icons.close),
-                      onPressed: () {
-                        Navigator.pop(context); // Cierra el Drawer
-                      },
+                    Align(
+                      alignment:
+                          Alignment
+                              .centerRight, // Icono a la derecha y centrado verticalmente
+                      child: IconButton(
+                        icon: Icon(Icons.close),
+                        onPressed: () {
+                          Navigator.pop(context); // Cierra el Drawer
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.category), // Icono de categorías
-            title: Text('Categorías'),
-            trailing: Icon(
-              Icons.arrow_drop_down,
-            ), // Icono de flecha hacia abajo
-            onTap: () {
-              // Acción al seleccionar Categorías
-              // Puedes navegar a la vista de categorías aquí si no estás ya en ella
-            },
+          ExpandableMenuItem(
+            title: 'Categorías',
+            icon: Icons.category,
+            children: [
+              ListTile(
+                title: Text('Subcategoría 1'),
+                onTap: () {
+                  // Acción al seleccionar Subcategoría 1
+                },
+              ),
+              ListTile(
+                title: Text('Subcategoría 2'),
+                onTap: () {
+                  // Acción al seleccionar Subcategoría 2
+                },
+              ),
+            ],
           ),
+
           ListTile(
             leading: Icon(Icons.shopping_bag_outlined), // Icono de pedidos
             title: Text('Mis pedidos'),
             onTap: () {
-              // Acción al seleccionar Mis pedidos
+              // Acción al seleccionar Pedidos
             },
           ),
           ListTile(
             leading: Icon(Icons.credit_card), // Icono de métodos de pago
             title: Text('Métodos de pago'),
             onTap: () {
-              // Acción al seleccionar Métodos de pago
+              // Acción al seleccionar Nosotros
             },
           ),
           ListTile(
             leading: Icon(Icons.location_on_outlined), // Icono de direcciones
             title: Text('Direcciones'),
             onTap: () {
-              // Acción al seleccionar Direcciones
+              // Acción al seleccionar Contacto
             },
           ),
           ListTile(

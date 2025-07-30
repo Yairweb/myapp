@@ -62,7 +62,7 @@ class CategoriesScreen extends StatelessWidget {
                                 crossAxisSpacing:
                                     12.0, // Espacio horizontal entre elementos
                                 mainAxisSpacing:
-                                    12.0, // Espacio vertical entre elementos
+                                    5.0, // Espacio vertical entre elementos
                                 childAspectRatio:
                                     1.2, // Relación de aspecto de los elementos (ancho/alto)
                               ),
