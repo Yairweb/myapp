@@ -14,29 +14,32 @@ class MenuLateral extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white, // Puedes ajustar el color de fondo
             ),
-            child: Stack(
-              children: [
-                Align(
-                  alignment:
-                      Alignment
-                          .centerLeft, // Logo a la izquierda y centrado verticalmente
-                  child: SvgPicture.asset(
-                    'assets/svg/logomayoreo.svg', // Reemplaza con la ruta de tu logo
-                    height: 30, // Ajusta la altura según sea necesario
+            child: SafeArea(
+              // Agrega SafeArea aquí
+              child: Stack(
+                children: [
+                  Align(
+                    alignment:
+                        Alignment
+                            .centerLeft, // Logo a la izquierda y centrado verticalmente
+                    child: SvgPicture.asset(
+                      'assets/svg/logomayoreo.svg', // Reemplaza con la ruta de tu logo
+                      height: 30, // Ajusta la altura según sea necesario
+                    ),
                   ),
-                ),
-                Align(
-                  alignment:
-                      Alignment
-                          .centerRight, // Icono a la derecha y centrado verticalmente
-                  child: IconButton(
-                    icon: Icon(Icons.close),
-                    onPressed: () {
-                      Navigator.pop(context); // Cierra el Drawer
-                    },
+                  Align(
+                    alignment:
+                        Alignment
+                            .centerRight, // Icono a la derecha y centrado verticalmente
+                    child: IconButton(
+                      icon: Icon(Icons.close),
+                      onPressed: () {
+                        Navigator.pop(context); // Cierra el Drawer
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           ListTile(
@@ -58,7 +61,7 @@ class MenuLateral extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.payment), // Icono de métodos de pago
+            leading: Icon(Icons.credit_card), // Icono de métodos de pago
             title: Text('Métodos de pago'),
             onTap: () {
               // Acción al seleccionar Métodos de pago
@@ -72,7 +75,7 @@ class MenuLateral extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.list_alt), // Icono de listas
+            leading: Icon(Icons.list_alt), // Icono de mis listas
             title: Text('Mis listas'),
             onTap: () {
               // Acción al seleccionar Mis listas
@@ -97,46 +100,6 @@ class MenuLateral extends StatelessWidget {
             title: Text('Catálogo'),
             onTap: () {
               // Acción al seleccionar Catálogo
-            },
-          ),
-          Divider(), // Línea divisoria
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'J. Antonio Flores', // Nombre del usuario (puedes hacerlo dinámico)
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 4),
-                InkWell(
-                  // Para que "Ver perfil" sea clickeable
-                  onTap: () {
-                    // Acción al hacer clic en Ver perfil
-                  },
-                  child: Row(
-                    children: [
-                      Text(
-                        'Ver perfil',
-                        style: TextStyle(color: Colors.blue), // Color de enlace
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        size: 16,
-                        color: Colors.blue,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.logout), // Icono de cerrar sesión
-            title: Text('Cerrar sesión'),
-            onTap: () {
-              // Acción al seleccionar Cerrar sesión
             },
           ),
         ],

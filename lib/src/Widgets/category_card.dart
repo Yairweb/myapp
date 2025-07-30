@@ -22,7 +22,7 @@ class _CategoryItemState extends State<CategoryItem> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(8.0), // Bordes redondeados
       ),
       child: Column(
@@ -51,6 +51,7 @@ class _CategoryItemState extends State<CategoryItem> {
                 fontSize: 14.0,
                 fontFamily: "inter",
                 fontWeight: FontWeight.w300,
+                color: AppColors.black,
               ), // Estilo del texto
             ),
           ),
