@@ -32,16 +32,26 @@ class CounterPromotionState extends State<CounterPromotion>
 
     _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
 
-    _controller.repeat(); // Loop the animation indefinitely
+    // Wait for the widget to be fully built before starting the animation
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _controller.repeat(); // Loop the animation indefinitely
+    });
 
     // Add a listener to the animation to update the scroll offset
     _animation.addListener(() {
-      // Calculate the maximum scroll offset
-      final maxScroll = _scrollController.position.maxScrollExtent;
-      // Calculate the current scroll offset based on the animation value
-      final currentScroll = maxScroll * _animation.value;
-      // Update the scroll offset
-      _scrollController.jumpTo(currentScroll);
+      // Check if the scroll controller is attached and position is not null
+      if (_scrollController.hasClients) {
+        try {
+          // Calculate the maximum scroll offset
+          final maxScroll = _scrollController.position!.maxScrollExtent;
+          // Calculate the current scroll offset based on the animation value
+          final currentScroll = maxScroll * _animation.value;
+          // Update the scroll offset
+          _scrollController.jumpTo(currentScroll);
+        } catch (e) {
+          // Ignore errors during initialization
+        }
+      }
     });
   }
 

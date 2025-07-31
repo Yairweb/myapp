@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:myapp/src/Widgets/category_item.dart';
 import 'package:myapp/src/Widgets/expanable_item.dart';
 
-class MenuLateral extends StatelessWidget {
+class MenuLateral extends StatefulWidget {
   const MenuLateral({super.key});
+
+  @override
+  _MenuLateralState createState() => _MenuLateralState();
+}
+
+class _MenuLateralState extends State<MenuLateral> {
+  int _selectedCategoryIndex = -1; // -1 significa que ninguna categoría está seleccionada
+
+  void _selectCategory(int index) {
+    setState(() {
+      _selectedCategoryIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: Colors.white,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
+      child: Column(
+        children: [
+          // Lista principal de elementos del menú
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
           // Removed DrawerHeader and added content directly
           SafeArea(
             child: Container(
@@ -42,80 +60,181 @@ class MenuLateral extends StatelessWidget {
           ExpandableMenuItem(
             title: 'Categorías',
             activeIconPath:
-                'assets/svg/categorie_active.svg', // Reemplaza con la ruta de tu icono activo
+                'assets/svg/categorie_active.svg',
             inactiveIconPath:
-                'assets/svg/categorie_inactive.svg', // Reemplaza con la ruta de tu icono inactivo
+                'assets/svg/categorie_inactive.svg',
             children: [
               SubcategoryItem(
                 title: Text('Subcategoría 1'),
                 onTap: () {
-                  // Acción al seleccionar Subcategoría 1
+                  _selectCategory(0);
                 },
                 text: 'Vitaminas y más',
-                isSelected: false,
+                isSelected: _selectedCategoryIndex == 0,
               ),
               SubcategoryItem(
-                title: Text('Subcategoría 1'),
+                title: Text('Subcategoría 2'),
                 onTap: () {
-                  // Acción al seleccionar Subcategoría 1
+                  _selectCategory(1);
                 },
                 text: 'Ofertas del mes',
-                isSelected: false,
+                isSelected: _selectedCategoryIndex == 1,
               ),
             ],
           ),
 
-          ListTile(
-            leading: Icon(Icons.shopping_bag_outlined), // Icono de pedidos
-            title: Text('Mis pedidos'),
+          CategoryItem(
+            title: "Mis pedidos",
+            activeIconPath: "assets/svg/pedidos_active.svg",
+            inactiveIconPath: "assets/svg/pedidos_inactive.svg",
+            isSelected: _selectedCategoryIndex == 2,
             onTap: () {
-              // Acción al seleccionar Pedidos
+              _selectCategory(2);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.credit_card), // Icono de métodos de pago
-            title: Text('Métodos de pago'),
+          CategoryItem(
+            title: "Métodos de pago",
+            activeIconPath: "assets/svg/cart_active.svg",
+            inactiveIconPath: "assets/svg/cart_inactive.svg",
+            isSelected: _selectedCategoryIndex == 3,
             onTap: () {
-              // Acción al seleccionar Nosotros
+              _selectCategory(3);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.location_on_outlined), // Icono de direcciones
-            title: Text('Direcciones'),
+          CategoryItem(
+            title: "Direcciones",
+            activeIconPath: "assets/svg/users_active.svg",
+            inactiveIconPath: "assets/svg/users_inactive.svg",
+            isSelected: _selectedCategoryIndex == 4,
             onTap: () {
-              // Acción al seleccionar Contacto
+              _selectCategory(4);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.list_alt), // Icono de mis listas
-            title: Text('Mis listas'),
+          CategoryItem(
+            title: "Mis listas",
+            activeIconPath: "assets/svg/orders_activo.svg",
+            inactiveIconPath: "assets/svg/orders_inactive.svg",
+            isSelected: _selectedCategoryIndex == 5,
             onTap: () {
-              // Acción al seleccionar Mis listas
+              _selectCategory(5);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.favorite_border), // Icono de favoritos
-            title: Text('Favoritos'),
+          CategoryItem(
+            title: "Favoritos",
+            activeIconPath: "assets/svg/cart_active.svg",
+            inactiveIconPath: "assets/svg/cart_inactive.svg",
+            isSelected: _selectedCategoryIndex == 6,
             onTap: () {
-              // Acción al seleccionar Favoritos
+              _selectCategory(6);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.help_outline), // Icono de soporte
-            title: Text('Soporte a mayorista'),
+          CategoryItem(
+            title: "Soporte a mayorista",
+            activeIconPath: "assets/svg/users_active.svg",
+            inactiveIconPath: "assets/svg/users_inactive.svg",
+            isSelected: _selectedCategoryIndex == 7,
             onTap: () {
-              // Acción al seleccionar Soporte
+              _selectCategory(7);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.book_outlined), // Icono de catálogo
-            title: Text('Catálogo'),
-            onTap: () {
-              // Acción al seleccionar Catálogo
-            },
-          ),
-        ],
-      ),
-    );
-  }
+                     CategoryItem(
+             title: "Catálogo",
+             activeIconPath: "assets/svg/orders_activo.svg",
+             inactiveIconPath: "assets/svg/orders_inactive.svg",
+             isSelected: _selectedCategoryIndex == 8,
+             onTap: () {
+               _selectCategory(8);
+             },
+           ),
+         ],
+       ),
+     ),
+     
+     // Sección de perfil de usuario (fija en la parte inferior)
+     Container(
+       padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+       child: Column(
+         crossAxisAlignment: CrossAxisAlignment.start,
+         children: [
+           // Nombre del usuario
+           Text(
+             'J. Antonio Flores',
+             style: TextStyle(
+               fontSize: 16.0,
+               fontWeight: FontWeight.bold,
+               color: Colors.black,
+             ),
+           ),
+           SizedBox(height: 4.0),
+           // Opción "Ver perfil"
+           InkWell(
+             splashColor: Colors.transparent,
+             highlightColor: Colors.transparent,
+             onTap: () {
+               // Acción para ver perfil
+             },
+             child: Row(
+               mainAxisAlignment: MainAxisAlignment.start,
+               children: [
+                 Text(
+                   'Ver perfil',
+                   style: TextStyle(
+                     fontSize: 14.0,
+                     color: Colors.grey[600],
+                   ),
+                 ),
+                 SizedBox(width: 4.0),
+                 Icon(
+                   Icons.arrow_forward_ios,
+                   size: 16.0,
+                   color: Colors.grey[600],
+                 ),
+               ],
+             ),
+           ),
+         ],
+       ),
+     ),
+     
+     SizedBox(height: 16.0),
+     
+     // Opción "Cerrar sesión"
+     Container(
+       padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+       child: InkWell(
+         splashColor: Colors.transparent,
+         highlightColor: Colors.transparent,
+         onTap: () {
+           // Acción para cerrar sesión
+         },
+         child: Row(
+           children: [
+             Icon(
+               Icons.logout,
+               size: 20.0,
+               color: Colors.grey[600],
+             ),
+             SizedBox(width: 12.0),
+             Text(
+               'Cerrar sesión',
+               style: TextStyle(
+                 fontSize: 14.0,
+                 color: Colors.grey[600],
+               ),
+             ),
+           ],
+         ),
+       ),
+     ),
+     
+     // Separador final
+     Divider(
+       height: 32.0,
+       thickness: 1.0,
+       color: Colors.transparent,
+     ),
+   ],
+ ),
+);
+}
 }
