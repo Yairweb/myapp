@@ -22,6 +22,7 @@ class ExpandableMenuItem extends StatefulWidget {
 
 class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
   bool _isExpanded = false;
+  int _selectedIndex = -1; // -1 indica que ninguna subcategoría está seleccionada
 
   final String _expandedIconPath = 'assets/svg/arrow_up.svg';
   final String _collapsedIconPath = 'assets/svg/arrow_down.svg';
@@ -55,6 +56,10 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
               onTap: () {
                 setState(() {
                   _isExpanded = !_isExpanded;
+                  // Reinicia la selección cuando se colapsa el menú
+                  if (!_isExpanded) {
+                    _selectedIndex = -1;
+                  }
                 });
               },
               child: Padding(
@@ -105,13 +110,26 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children:
-                    widget.children.map((subcategory) {
+                    widget.children.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final subcategory = entry.value;
                       return Padding(
-                        // Agrega Padding aquí
                         padding: const EdgeInsets.only(
                           left: 30.0,
-                        ), // Ajusta el valor del padding izquierdo
-                        child: subcategory,
+                        ),
+                        child: SubcategoryItem(
+                          text: subcategory.text,
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = index;
+                            });
+                            if (subcategory.onTap != null) {
+                              subcategory.onTap!();
+                            }
+                          },
+                          isSelected: _selectedIndex == index, // Pasa el estado de selección
+                          title: Text(subcategory.text), // Puedes ajustar esto si necesitas un título diferente para la subcategoría
+                        ),
                       );
                     }).toList(),
               ),
@@ -124,20 +142,24 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
 
 class SubcategoryItem extends StatelessWidget {
   final String text;
-  final VoidCallback? onTap; // Para manejar el tap en la subcategoría
+  final VoidCallback? onTap;
+  final bool isSelected; // Nuevo parámetro para el estado de selección
+
   const SubcategoryItem({
     Key? key,
     required this.text,
     this.onTap,
+    required this.isSelected, // Requiere el estado de selección
     required Text title,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        height: 32.0, // Mismo alto que la categoría principal
+        height: 32.0,
         margin: const EdgeInsets.symmetric(
           vertical: 5.0,
         ), // Espacio entre subcategorías
@@ -145,9 +167,7 @@ class SubcategoryItem extends StatelessWidget {
           horizontal: 16.0,
         ), // Padding horizontal
         decoration: BoxDecoration(
-          color:
-              AppColors
-                  .backCards, // Color de fondo similar al de la categoría expandida
+          color: isSelected ? AppColors.backCards : AppColors.white, // Cambia el color basado en isSelected
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(50.0),
             topRight: Radius.circular(50.0),

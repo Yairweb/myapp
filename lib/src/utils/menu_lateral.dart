@@ -52,6 +52,7 @@ class MenuLateral extends StatelessWidget {
                   // Acción al seleccionar Subcategoría 1
                 },
                 text: 'Vitaminas y más',
+                isSelected: false,
               ),
               SubcategoryItem(
                 title: Text('Subcategoría 1'),
@@ -59,6 +60,7 @@ class MenuLateral extends StatelessWidget {
                   // Acción al seleccionar Subcategoría 1
                 },
                 text: 'Ofertas del mes',
+                isSelected: false,
               ),
             ],
           ),
