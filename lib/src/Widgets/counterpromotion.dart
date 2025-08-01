@@ -32,6 +32,11 @@ class CounterPromotionState extends State<CounterPromotion>
 
     _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
 
+    // Wait for the widget to be fully built before starting the animation
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _controller.repeat(); // Loop the animation indefinitely
+    });
+
     // Add a listener to the animation to update the scroll offset
     _animation.addListener(() {
       // Check if the scroll controller is attached and has a position
