@@ -9,12 +9,12 @@ class ExpandableMenuItem extends StatefulWidget {
   final List<SubcategoryItem> children;
 
   const ExpandableMenuItem({
-    Key? key,
+    super.key,
     required this.title,
     required this.activeIconPath,
     required this.inactiveIconPath,
     required this.children,
-  }) : super(key: key);
+  });
 
   @override
   _ExpandableMenuItemState createState() => _ExpandableMenuItemState();
@@ -53,6 +53,8 @@ class _ExpandableMenuItemState extends State<ExpandableMenuItem> {
             ),
             alignment: Alignment.center,
             child: InkWell(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
               onTap: () {
                 setState(() {
                   _isExpanded = !_isExpanded;
@@ -156,6 +158,8 @@ class SubcategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: onTap,
       child: Container(
         width: double.infinity,
