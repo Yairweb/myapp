@@ -16,11 +16,11 @@ class CategoriesScreen extends StatelessWidget {
       'imageUrl':
           'https://blife-mx-categorias.s3.amazonaws.com/accesorios-8b9c54-movil.webp',
     },
-    {'name': 'Ropa', 'imageUrl': 'https://via.placeholder.com/150'},
-    {'name': 'Hogar', 'imageUrl': 'https://via.placeholder.com/150'},
-    {'name': 'Deportes', 'imageUrl': 'https://via.placeholder.com/150'},
-    {'name': 'Libros', 'imageUrl': 'https://via.placeholder.com/150'},
-    {'name': 'Juguetes', 'imageUrl': 'https://via.placeholder.com/150'},
+    {'name': 'Ropa', 'imageUrl': 'https://blife-mx-categorias.s3.amazonaws.com/accesorios-8b9c54-movil.webp'},
+    {'name': 'Hogar', 'imageUrl': 'https://blife-mx-categorias.s3.amazonaws.com/accesorios-8b9c54-movil.webp'},
+    {'name': 'Deportes', 'imageUrl': 'https://blife-mx-categorias.s3.amazonaws.com/accesorios-8b9c54-movil.webp'},
+    {'name': 'Libros', 'imageUrl': 'https://blife-mx-categorias.s3.amazonaws.com/accesorios-8b9c54-movil.webp'},
+    {'name': 'Juguetes', 'imageUrl': 'https://blife-mx-categorias.s3.amazonaws.com/accesorios-8b9c54-movil.webp'},
   ];
 
   @override
