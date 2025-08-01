@@ -43,7 +43,7 @@ class CounterPromotionState extends State<CounterPromotion>
       if (_scrollController.hasClients) {
         try {
           // Calculate the maximum scroll offset
-          final maxScroll = _scrollController.position!.maxScrollExtent;
+          final maxScroll = _scrollController.position.maxScrollExtent;
           // Calculate the current scroll offset based on the animation value
           final currentScroll = maxScroll * _animation.value;
           // Update the scroll offset
